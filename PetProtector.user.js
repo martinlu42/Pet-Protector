@@ -40,7 +40,7 @@ var hidePet = function () {};
 // Set hidePet based on web address
 if (window.location.pathname.match("lab2")) {
 	hidePet = function(index,petName) {
-		$('input[value="'+petName+'"]').parent().remove();
+		$('input[value="'+petName+'"]').remove();
 	};
 } else if (window.location.pathname.match("pool")) {
 	hidePet = function(index,petName) {
@@ -60,11 +60,11 @@ if (window.location.pathname.match("lab2")) {
 	}
 } else if (window.location.pathname.match("abandon")) {
 	hidePet = function(index,petName) {
-		$('input[value="'+petName+'"]').parent().parent().remove();
+		$('input[value="'+petName+'"]').parent().remove();
 	};
 } else if (window.location.pathname.match("petpetlab")) {
 	hidePet = function(index,petName) {
-		$('table table td:contains("'+petName+'")').remove();
+		$('input[value="'+petName+'"]').remove();
 	};
 } else if (window.location.pathname.match("quickref")) {
 	$('a[href*="convert_pet"]').parent().remove();
