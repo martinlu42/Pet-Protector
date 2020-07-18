@@ -40,7 +40,8 @@ var hidePet = function () {};
 // Set hidePet based on web address
 if (window.location.pathname.match("lab2")) {
 	hidePet = function(index,petName) {
-		$('input[value="'+petName+'"]').remove();
+		//$('input[value="'+petName+'"]').remove();
+        $('input[value="'+petName+'"]').parent().remove();
 	};
 } else if (window.location.pathname.match("pool")) {
 	hidePet = function(index,petName) {
@@ -60,15 +61,21 @@ if (window.location.pathname.match("lab2")) {
 	}
 } else if (window.location.pathname.match("abandon")) {
 	hidePet = function(index,petName) {
+        //$('input[value="'+petName+'"]').remove();
 		$('input[value="'+petName+'"]').parent().remove();
 	};
 } else if (window.location.pathname.match("petpetlab")) {
 	hidePet = function(index,petName) {
-		$('input[value="'+petName+'"]').remove();
+		$('input[value="'+petName+'"]').parent().remove();
 	};
 } else if (window.location.pathname.match("quickref")) {
 	$('a[href*="convert_pet"]').parent().remove();
 }
 
 // Hide the pets!
-$.each(pets,hidePet);
+let wait = setInterval(() => {
+    if ($('.bx-loading').length === 0) {
+        clearInterval(wait);
+        $.each(pets,hidePet);
+    }
+}, 300);
